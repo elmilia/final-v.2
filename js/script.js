@@ -15,7 +15,7 @@ $(document).ready(function () {
         $("#log").addClass("d-none");
         $("#pc").addClass("d-none");
         $("in").removeClass("d-none")
-        localStorage.setItem("status", "ugursuz")
+        localStorage.removeItem("status")
         localStorage.removeItem("current");
     });
 });

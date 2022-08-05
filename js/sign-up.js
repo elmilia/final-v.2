@@ -61,22 +61,30 @@ $(document).ready(function () {
                 phone: tel,
                 pass: pas
             }
-            var name = obj.uname;
-            for (let i = 0; i <= users.length; i++) {
-                if (name == users[i].uname) {
-                    alert = ("artiq bele username var")
-                    istifadeciVarmi = true;
-                    break;
-                }
+            var Obg = JSON.parse(localStorage.getItem(`users`));
+            if (!users.length==0) {
+                for (var i = 0; i < Obg.length; i++) {
+                    if ($("#mail").val() == Obg[i].uname) {
+                      alert("Artiq bele istifadeci var");
+                      istifadeciVarmi = true;
+                      break;
+                    } else {
+                      yoxla = false;
+                      break;
+                    }
+                  }
             }
-            if (!istifadeciVarmi) {
-                users.push(obj);
-                let json = JSON.stringify(users);
-                localStorage.setItem("users", json);
-                alert("siz artiq qeydiyyatdan kecmisiniz username ve sifrevizi dolduraraq ana sehifeye gede bilersiniz");
+      
+            if (istifadeciVarmi == false) {
+              
+            users.push(obj);
+            let Json = JSON.stringify(users);
+            localStorage.setItem('users', Json);
+              setTimeout(() => {
+                window.location.assign("log-in.html")
+              }, 500);
             }
-
-            // window.location.assign("log-in.html");
+ 
         }
     });
 });
